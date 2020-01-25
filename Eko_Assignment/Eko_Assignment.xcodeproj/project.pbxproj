@@ -1,0 +1,625 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		609344EA23DC679500D21281 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609344E923DC679500D21281 /* AppDelegate.swift */; };
+		609344F123DC679500D21281 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 609344EF23DC679500D21281 /* Main.storyboard */; };
+		609344F323DC679600D21281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 609344F223DC679600D21281 /* Assets.xcassets */; };
+		609344F623DC679600D21281 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 609344F423DC679600D21281 /* LaunchScreen.storyboard */; };
+		6093450123DC679600D21281 /* Eko_AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093450023DC679600D21281 /* Eko_AssignmentTests.swift */; };
+		6093450C23DC679600D21281 /* Eko_AssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093450B23DC679600D21281 /* Eko_AssignmentUITests.swift */; };
+		6093451D23DC774600D21281 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093451C23DC774600D21281 /* UserListViewController.swift */; };
+		6093451F23DC775900D21281 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093451E23DC775900D21281 /* UserListViewModel.swift */; };
+		6093452123DC776800D21281 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093452023DC776800D21281 /* User.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		609344FD23DC679600D21281 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 609344DE23DC679500D21281 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 609344E523DC679500D21281;
+			remoteInfo = Eko_Assignment;
+		};
+		6093450823DC679600D21281 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 609344DE23DC679500D21281 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 609344E523DC679500D21281;
+			remoteInfo = Eko_Assignment;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		609344E623DC679500D21281 /* Eko_Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eko_Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		609344E923DC679500D21281 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		609344F023DC679500D21281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		609344F223DC679600D21281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		609344F523DC679600D21281 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		609344F723DC679600D21281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		609344FC23DC679600D21281 /* Eko_AssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Eko_AssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6093450023DC679600D21281 /* Eko_AssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eko_AssignmentTests.swift; sourceTree = "<group>"; };
+		6093450223DC679600D21281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6093450723DC679600D21281 /* Eko_AssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Eko_AssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6093450B23DC679600D21281 /* Eko_AssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eko_AssignmentUITests.swift; sourceTree = "<group>"; };
+		6093450D23DC679600D21281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6093451C23DC774600D21281 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		6093451E23DC775900D21281 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
+		6093452023DC776800D21281 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		609344E323DC679500D21281 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		609344F923DC679600D21281 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6093450423DC679600D21281 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		609344DD23DC679500D21281 = {
+			isa = PBXGroup;
+			children = (
+				609344E823DC679500D21281 /* Eko_Assignment */,
+				609344FF23DC679600D21281 /* Eko_AssignmentTests */,
+				6093450A23DC679600D21281 /* Eko_AssignmentUITests */,
+				609344E723DC679500D21281 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		609344E723DC679500D21281 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				609344E623DC679500D21281 /* Eko_Assignment.app */,
+				609344FC23DC679600D21281 /* Eko_AssignmentTests.xctest */,
+				6093450723DC679600D21281 /* Eko_AssignmentUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		609344E823DC679500D21281 /* Eko_Assignment */ = {
+			isa = PBXGroup;
+			children = (
+				6093452223DC77E800D21281 /* Networking */,
+				6093451B23DC76F100D21281 /* Models */,
+				6093451A23DC76E200D21281 /* ViewModels */,
+				6093451923DC76CD00D21281 /* Controllers */,
+				609344E923DC679500D21281 /* AppDelegate.swift */,
+				609344EF23DC679500D21281 /* Main.storyboard */,
+				609344F223DC679600D21281 /* Assets.xcassets */,
+				609344F423DC679600D21281 /* LaunchScreen.storyboard */,
+				609344F723DC679600D21281 /* Info.plist */,
+			);
+			path = Eko_Assignment;
+			sourceTree = "<group>";
+		};
+		609344FF23DC679600D21281 /* Eko_AssignmentTests */ = {
+			isa = PBXGroup;
+			children = (
+				6093450023DC679600D21281 /* Eko_AssignmentTests.swift */,
+				6093450223DC679600D21281 /* Info.plist */,
+			);
+			path = Eko_AssignmentTests;
+			sourceTree = "<group>";
+		};
+		6093450A23DC679600D21281 /* Eko_AssignmentUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6093450B23DC679600D21281 /* Eko_AssignmentUITests.swift */,
+				6093450D23DC679600D21281 /* Info.plist */,
+			);
+			path = Eko_AssignmentUITests;
+			sourceTree = "<group>";
+		};
+		6093451923DC76CD00D21281 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6093451C23DC774600D21281 /* UserListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6093451A23DC76E200D21281 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6093451E23DC775900D21281 /* UserListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6093451B23DC76F100D21281 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6093452023DC776800D21281 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6093452223DC77E800D21281 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		609344E523DC679500D21281 /* Eko_Assignment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6093451023DC679600D21281 /* Build configuration list for PBXNativeTarget "Eko_Assignment" */;
+			buildPhases = (
+				609344E223DC679500D21281 /* Sources */,
+				609344E323DC679500D21281 /* Frameworks */,
+				609344E423DC679500D21281 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Eko_Assignment;
+			productName = Eko_Assignment;
+			productReference = 609344E623DC679500D21281 /* Eko_Assignment.app */;
+			productType = "com.apple.product-type.application";
+		};
+		609344FB23DC679600D21281 /* Eko_AssignmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6093451323DC679600D21281 /* Build configuration list for PBXNativeTarget "Eko_AssignmentTests" */;
+			buildPhases = (
+				609344F823DC679600D21281 /* Sources */,
+				609344F923DC679600D21281 /* Frameworks */,
+				609344FA23DC679600D21281 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				609344FE23DC679600D21281 /* PBXTargetDependency */,
+			);
+			name = Eko_AssignmentTests;
+			productName = Eko_AssignmentTests;
+			productReference = 609344FC23DC679600D21281 /* Eko_AssignmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6093450623DC679600D21281 /* Eko_AssignmentUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6093451623DC679600D21281 /* Build configuration list for PBXNativeTarget "Eko_AssignmentUITests" */;
+			buildPhases = (
+				6093450323DC679600D21281 /* Sources */,
+				6093450423DC679600D21281 /* Frameworks */,
+				6093450523DC679600D21281 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6093450923DC679600D21281 /* PBXTargetDependency */,
+			);
+			name = Eko_AssignmentUITests;
+			productName = Eko_AssignmentUITests;
+			productReference = 6093450723DC679600D21281 /* Eko_AssignmentUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		609344DE23DC679500D21281 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Venugopalan, Vimal";
+				TargetAttributes = {
+					609344E523DC679500D21281 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					609344FB23DC679600D21281 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 609344E523DC679500D21281;
+					};
+					6093450623DC679600D21281 = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 609344E523DC679500D21281;
+					};
+				};
+			};
+			buildConfigurationList = 609344E123DC679500D21281 /* Build configuration list for PBXProject "Eko_Assignment" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 609344DD23DC679500D21281;
+			productRefGroup = 609344E723DC679500D21281 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				609344E523DC679500D21281 /* Eko_Assignment */,
+				609344FB23DC679600D21281 /* Eko_AssignmentTests */,
+				6093450623DC679600D21281 /* Eko_AssignmentUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		609344E423DC679500D21281 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				609344F623DC679600D21281 /* LaunchScreen.storyboard in Resources */,
+				609344F323DC679600D21281 /* Assets.xcassets in Resources */,
+				609344F123DC679500D21281 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		609344FA23DC679600D21281 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6093450523DC679600D21281 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		609344E223DC679500D21281 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6093452123DC776800D21281 /* User.swift in Sources */,
+				609344EA23DC679500D21281 /* AppDelegate.swift in Sources */,
+				6093451F23DC775900D21281 /* UserListViewModel.swift in Sources */,
+				6093451D23DC774600D21281 /* UserListViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		609344F823DC679600D21281 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6093450123DC679600D21281 /* Eko_AssignmentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6093450323DC679600D21281 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6093450C23DC679600D21281 /* Eko_AssignmentUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		609344FE23DC679600D21281 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 609344E523DC679500D21281 /* Eko_Assignment */;
+			targetProxy = 609344FD23DC679600D21281 /* PBXContainerItemProxy */;
+		};
+		6093450923DC679600D21281 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 609344E523DC679500D21281 /* Eko_Assignment */;
+			targetProxy = 6093450823DC679600D21281 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		609344EF23DC679500D21281 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				609344F023DC679500D21281 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		609344F423DC679600D21281 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				609344F523DC679600D21281 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6093450E23DC679600D21281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6093450F23DC679600D21281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6093451123DC679600D21281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Eko_Assignment/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Vimal.Eko-Assignment";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6093451223DC679600D21281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Eko_Assignment/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Vimal.Eko-Assignment";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6093451423DC679600D21281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Eko_AssignmentTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Vimal.Eko-AssignmentTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eko_Assignment.app/Eko_Assignment";
+			};
+			name = Debug;
+		};
+		6093451523DC679600D21281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Eko_AssignmentTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Vimal.Eko-AssignmentTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eko_Assignment.app/Eko_Assignment";
+			};
+			name = Release;
+		};
+		6093451723DC679600D21281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Eko_AssignmentUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Vimal.Eko-AssignmentUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Eko_Assignment;
+			};
+			name = Debug;
+		};
+		6093451823DC679600D21281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Eko_AssignmentUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Vimal.Eko-AssignmentUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Eko_Assignment;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		609344E123DC679500D21281 /* Build configuration list for PBXProject "Eko_Assignment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6093450E23DC679600D21281 /* Debug */,
+				6093450F23DC679600D21281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6093451023DC679600D21281 /* Build configuration list for PBXNativeTarget "Eko_Assignment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6093451123DC679600D21281 /* Debug */,
+				6093451223DC679600D21281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6093451323DC679600D21281 /* Build configuration list for PBXNativeTarget "Eko_AssignmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6093451423DC679600D21281 /* Debug */,
+				6093451523DC679600D21281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6093451623DC679600D21281 /* Build configuration list for PBXNativeTarget "Eko_AssignmentUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6093451723DC679600D21281 /* Debug */,
+				6093451823DC679600D21281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 609344DE23DC679500D21281 /* Project object */;
+}
