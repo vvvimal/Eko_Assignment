@@ -9,6 +9,7 @@
 import UIKit
 
 class UserListViewController: UITableViewController {
+    let viewModel = UserListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,64 +19,36 @@ class UserListViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setupTableView()
+        fetchUsers()
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    /// Setup Table View properties
+    func setupTableView(){
+        
+        self.tableView.accessibilityLabel = "TagListTableView"
+        self.tableView.isAccessibilityElement = true
+        self.tableView.tableFooterView = UIView()
+        self.tableView.register(UserListViewCell.self, forCellReuseIdentifier: "UserListViewCell")
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    
+    func fetchUsers(){
+        activityStartAnimating()
+        viewModel.getUserList(completionHandler: {[weak self] result in
+            self?.activityStopAnimating()
+            switch(result){
+            case .success( _):
+                self?.tableView.reloadData()
+            case .failure(let error):
+                debugPrint(error.message)
+                self?.showError(error: error)
+            }
+        })
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    func showError(error:APIError){
+        _ = self.showAlert(withTitle: "Error", message: error.message)
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
@@ -88,3 +61,83 @@ class UserListViewController: UITableViewController {
     */
 
 }
+
+extension UserListViewController{
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return viewModel.userCount()
+    }
+
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserListViewCell", for: indexPath) as? UserListViewCell else{
+            fatalError("No cell found")
+        }
+
+        // Configure the cell...
+        
+        let user = viewModel.userAt(index: indexPath)
+        
+        cell.user = user
+        cell.isFavorite = viewModel.isFavorite(userId: user.id)
+        cell.delegate = self
+        
+        return cell
+    }
+    
+    /// TableView Delegate method for height of the cell
+    ///
+    /// - Parameters:
+    ///   - tableView: UITableView object
+    ///   - indexPath: indexPath of the cell
+    /// - Returns: Automatic height
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    /// Tableview did select cell action
+    ///
+    /// - Parameters:
+    ///   - tableView: UITableView object
+    ///   - indexPath: indexPath of the cell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    /// Estimated height for tableview row cell
+    ///
+    /// - Parameters:
+    ///   - tableView: UITableView object
+    ///   - indexPath: indexPath of the cell
+    /// - Returns: CGFloat value representing the estimated height of the cell
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
+        {
+            fetchUsers()
+        }
+    }
+}
+
+extension UserListViewController : UserListViewCellDelegate {
+    func userListViewCell(_ userListViewCell: UserListViewCell, favoriteButtonTapped userId: Int) {
+        // show alert
+        if let indexPath = self.tableView.indexPath(for: userListViewCell) {
+            _ = self.showAlert(withTitle: "Success", message: "Added to favorites", completionHandler: {
+                self.viewModel.changeFavoriteStatus(userId: userId)
+                self.tableView.reloadRows(at: [indexPath], with: .none)
+            })
+        }
+    }
+}
+
