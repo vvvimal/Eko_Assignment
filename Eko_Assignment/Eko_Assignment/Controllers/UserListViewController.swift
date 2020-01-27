@@ -50,15 +50,18 @@ class UserListViewController: UITableViewController {
         _ = self.showAlert(withTitle: "Error", message: error.message)
     }
 
-    /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destination.
+    // Pass the selected object to the new view controller.
+       if segue.identifier == "GithubUserPageSegue"{
+           if let githubWebViewController = segue.destination as? GithubWebViewController, let user = sender as? User {
+               githubWebViewController.setUpWith(user: user)
+           }
+       }
     }
-    */
 
 }
 
@@ -108,7 +111,8 @@ extension UserListViewController{
     ///   - tableView: UITableView object
     ///   - indexPath: indexPath of the cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let user = viewModel.userAt(index: indexPath)
+        performSegue(withIdentifier: "GithubUserPageSegue", sender: user)
     }
     
     /// Estimated height for tableview row cell

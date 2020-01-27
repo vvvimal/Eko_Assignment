@@ -3,10 +3,11 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Users-->
         <scene sceneID="eDU-C3-LiX">
             <objects>
                 <tableViewController id="gzB-Fr-Qcg" customClass="UserListViewController" customModule="Eko_Assignment" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,11 +20,30 @@
                             <outlet property="delegate" destination="gzB-Fr-Qcg" id="Lyd-N2-mvD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="I0q-zR-KTI"/>
+                    <navigationItem key="navigationItem" title="Users" id="I0q-zR-KTI"/>
+                    <connections>
+                        <segue destination="bBL-Jp-KEM" kind="show" identifier="GithubUserPageSegue" id="bdU-uM-q9P"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTC-XF-jBF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137" y="-245"/>
+        </scene>
+        <!--Github Web View Controller-->
+        <scene sceneID="6fk-HZ-vO2">
+            <objects>
+                <viewController id="bBL-Jp-KEM" customClass="GithubWebViewController" customModule="Eko_Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oPy-Mo-fZl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XmR-jm-aGe"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jPR-3t-UZH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CUg-PS-7UT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="902.89855072463774" y="-245.08928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k21-NS-iwe">

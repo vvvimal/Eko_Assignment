@@ -158,7 +158,7 @@ class UserListViewCell: UITableViewCell {
             })
             )
             nameLabel.text = "\(user.login)"
-            urlLabel.text = "\(user.url)"
+            urlLabel.text = "\(user.html_url)"
             accountTypeLabel.text = "Type: \(user.type)"
             siteAdminStatusLabel.text = "Admin Status: \(user.site_admin)"
 
@@ -177,7 +177,7 @@ class UserListViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    @IBAction func favoriteButtonTapped(_ sender: UIButton){
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         if let userObj = user, let delegateObj = delegate {
             delegateObj.userListViewCell(self, favoriteButtonTapped: userObj.id)
         }

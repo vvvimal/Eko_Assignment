@@ -26,6 +26,7 @@
 		6093453523DDD3CF00D21281 /* ImageDownloadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093453423DDD3CF00D21281 /* ImageDownloadRequest.swift */; };
 		6093453723DDD5D700D21281 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093453623DDD5D700D21281 /* CacheManager.swift */; };
 		6093453923DEC09800D21281 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093453823DEC09800D21281 /* Utils.swift */; };
+		6093453B23DF4C1800D21281 /* GithubWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6093453A23DF4C1800D21281 /* GithubWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		6093453423DDD3CF00D21281 /* ImageDownloadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadRequest.swift; sourceTree = "<group>"; };
 		6093453623DDD5D700D21281 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		6093453823DEC09800D21281 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		6093453A23DF4C1800D21281 /* GithubWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubWebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				6093451C23DC774600D21281 /* UserListViewController.swift */,
+				6093453A23DF4C1800D21281 /* GithubWebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				6093452723DCC50100D21281 /* AppConstants.swift in Sources */,
 				609344EA23DC679500D21281 /* AppDelegate.swift in Sources */,
 				6093452423DCC4C400D21281 /* NetworkManager.swift in Sources */,
+				6093453B23DF4C1800D21281 /* GithubWebViewController.swift in Sources */,
 				6093451F23DC775900D21281 /* UserListViewModel.swift in Sources */,
 				6093451D23DC774600D21281 /* UserListViewController.swift in Sources */,
 				6093452B23DCCBFC00D21281 /* Reachability.swift in Sources */,
