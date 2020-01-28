@@ -13,6 +13,14 @@ struct NetworkData{
     static let kUserEndPoint = "users?since="
 }
 
+struct AppIdentifierStrings {
+    static let kUserListViewCellReuseIdentifier = "UserListViewCellReuseIdentifier"
+}
+
+struct AppSegueIdentifierStrings{
+    static let kGithubUserPageSegue = "GithubUserPageSegue"
+}
+
 /// API related errors
 enum APIError:Error{
     

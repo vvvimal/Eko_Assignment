@@ -35,12 +35,12 @@ class UserListGetManager: NetworkManager {
         self.init(configuration: .default)
     }
     
-    /// Get In Bus Request
+    /// Get User List Request
     ///
     /// - Parameters:
-    ///   - request: In Bus Request object
-    ///   - completion: Result consisting of the StudentDataModel Object or APIError
-    func getPhotoList(from request: UserListGetRequest, completion: @escaping (Result<[User]?, APIError>) -> Void) {
+    ///   - request: In UserListGetRequest object
+    ///   - completion: Result consisting of the User Array or APIError
+    func getUserList(from request: BaseRequest, completion: @escaping (Result<[User]?, APIError>) -> Void) {
         if let requestObj = request.request{
             fetch(with: requestObj, decode: { json -> [User]? in
                 guard let userResult = json as? [User] else { return  nil }

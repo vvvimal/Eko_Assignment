@@ -10,7 +10,7 @@
         <!--Users-->
         <scene sceneID="eDU-C3-LiX">
             <objects>
-                <tableViewController id="gzB-Fr-Qcg" customClass="UserListViewController" customModule="Eko_Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="UserListViewController" id="gzB-Fr-Qcg" customClass="UserListViewController" customModule="Eko_Assignment" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zxg-lN-mbp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
         <!--Github Web View Controller-->
         <scene sceneID="6fk-HZ-vO2">
             <objects>
-                <viewController id="bBL-Jp-KEM" customClass="GithubWebViewController" customModule="Eko_Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GithubWebViewController" id="bBL-Jp-KEM" customClass="GithubWebViewController" customModule="Eko_Assignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oPy-Mo-fZl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

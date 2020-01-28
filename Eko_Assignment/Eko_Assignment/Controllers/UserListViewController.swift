@@ -9,6 +9,8 @@
 import UIKit
 
 class UserListViewController: UITableViewController {
+    var alert : UIAlertController?
+
     let viewModel = UserListViewModel()
 
     override func viewDidLoad() {
@@ -26,28 +28,43 @@ class UserListViewController: UITableViewController {
     /// Setup Table View properties
     func setupTableView(){
         
-        self.tableView.accessibilityLabel = "TagListTableView"
+        self.tableView.accessibilityLabel = "UserListTableView"
         self.tableView.isAccessibilityElement = true
         self.tableView.tableFooterView = UIView()
-        self.tableView.register(UserListViewCell.self, forCellReuseIdentifier: "UserListViewCell")
+        self.tableView.register(UserListViewCell.self, forCellReuseIdentifier: AppIdentifierStrings.kUserListViewCellReuseIdentifier)
     }
     
     func fetchUsers(){
         activityStartAnimating()
         viewModel.getUserList(completionHandler: {[weak self] result in
-            self?.activityStopAnimating()
             switch(result){
             case .success( _):
-                self?.tableView.reloadData()
+                self?.reloadTableView()
             case .failure(let error):
                 debugPrint(error.message)
-                self?.showError(error: error)
+                self?.setError(error: error)
             }
         })
     }
     
-    func showError(error:APIError){
-        _ = self.showAlert(withTitle: "Error", message: error.message)
+    /// Reload data after successful API request
+    func reloadTableView() {
+        DispatchQueue.main.async() { () -> Void in
+            self.activityStopAnimating()
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
+        
+    }
+    
+    /// Error received from API request
+    ///
+    /// - Parameter error: APIError
+    func setError(error:APIError){
+        DispatchQueue.main.async() { () -> Void in
+            self.activityStopAnimating()
+            self.alert = self.showAlert(withTitle: "Error", message: error.message)
+        }
     }
 
     // MARK: - Navigation
@@ -56,7 +73,7 @@ class UserListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     // Get the new view controller using segue.destination.
     // Pass the selected object to the new view controller.
-       if segue.identifier == "GithubUserPageSegue"{
+        if segue.identifier == AppSegueIdentifierStrings.kGithubUserPageSegue {
            if let githubWebViewController = segue.destination as? GithubWebViewController, let user = sender as? User {
                githubWebViewController.setUpWith(user: user)
            }
@@ -70,17 +87,17 @@ extension UserListViewController{
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return viewModel.numberOfSections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return viewModel.userCount()
+        return viewModel.numberOfRows(inSection: section)
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserListViewCell", for: indexPath) as? UserListViewCell else{
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AppIdentifierStrings.kUserListViewCellReuseIdentifier, for: indexPath) as? UserListViewCell else{
             fatalError("No cell found")
         }
 
@@ -91,7 +108,8 @@ extension UserListViewController{
         cell.user = user
         cell.isFavorite = viewModel.isFavorite(userId: user.id)
         cell.delegate = self
-        
+        cell.isAccessibilityElement = true
+
         return cell
     }
     
@@ -112,7 +130,7 @@ extension UserListViewController{
     ///   - indexPath: indexPath of the cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = viewModel.userAt(index: indexPath)
-        performSegue(withIdentifier: "GithubUserPageSegue", sender: user)
+        performSegue(withIdentifier: AppSegueIdentifierStrings.kGithubUserPageSegue, sender: user)
     }
     
     /// Estimated height for tableview row cell
@@ -122,7 +140,7 @@ extension UserListViewController{
     ///   - indexPath: indexPath of the cell
     /// - Returns: CGFloat value representing the estimated height of the cell
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 100
     }
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -136,11 +154,19 @@ extension UserListViewController{
 extension UserListViewController : UserListViewCellDelegate {
     func userListViewCell(_ userListViewCell: UserListViewCell, favoriteButtonTapped userId: Int) {
         // show alert
-        if let indexPath = self.tableView.indexPath(for: userListViewCell) {
-            _ = self.showAlert(withTitle: "Success", message: "Added to favorites", completionHandler: {
-                self.viewModel.changeFavoriteStatus(userId: userId)
-                self.tableView.reloadRows(at: [indexPath], with: .none)
-            })
+        if let indexPath = self.tableView.indexPathForRow(at: userListViewCell.center){
+            let isFavorited = self.viewModel.addFavoriteStatus(userId: userId)
+            DispatchQueue.main.async() { () -> Void in
+                if isFavorited == true {
+                    self.alert = self.showAlert(withTitle: "Success", message: "Added to favorites", completionHandler: {
+                        self.tableView.reloadRows(at: [indexPath], with: .none)
+                    })
+                } else{
+                    self.alert = self.showAlert(withTitle: "Success", message: "Removed to favorites", completionHandler: {
+                        self.tableView.reloadRows(at: [indexPath], with: .none)
+                    })
+                }
+            }
         }
     }
 }

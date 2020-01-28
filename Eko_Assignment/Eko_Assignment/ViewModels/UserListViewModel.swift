@@ -10,14 +10,16 @@ import UIKit
 
 class UserListViewModel: NSObject {
 
-    private var userArray:[User] = []
+    var userArray:[User] = []
     
-    let userListGetManager = UserListGetManager()
+    private let userListGetManager = UserListGetManager()
+    
+    var numberOfSections = 1
     
     func getUserList(completionHandler:@escaping (Result<Bool, APIError>) -> Void){
         let userListGetRequest = UserListGetRequest(count: userArray.count)
         
-        userListGetManager.getPhotoList(from: userListGetRequest, completion: {[weak self] result in
+        userListGetManager.getUserList(from: userListGetRequest, completion: {[weak self] result in
             switch(result){
             case .success(let userListObj):
                 if let userList = userListObj {
@@ -35,27 +37,30 @@ class UserListViewModel: NSObject {
         userArray[index.row]
     }
     
-    func userCount() -> Int{
+    func numberOfRows(inSection: Int) -> Int{
         userArray.count
     }
     
-    func changeFavoriteStatus(userId: Int){
+    func addFavoriteStatus(userId: Int) -> Bool{
         var favorite:[Int] = Utils.getValue(for: "favoriteArray") as? [Int] ?? []
         if favorite.filter({$0 == userId}) != [] {
             favorite.removeFirst(userId)
+            Utils.save(value: favorite, for: "favoriteArray")
+            return false
         }
         else{
             favorite.append(userId)
+            Utils.save(value: favorite, for: "favoriteArray")
+            return true
         }
-        Utils.save(value: favorite, for: "favoriteArray")
     }
     
     func isFavorite(userId:Int) -> Bool{
         let favorite:[Int] = Utils.getValue(for: "favoriteArray") as? [Int] ?? []
 
-        if favorite.filter({$0 == userId}) != [] {
+        return favorite.filter({$0 == userId}) != [] ? true : false /*{
             return true
         }
-        return false
+        return false*/
     }
 }

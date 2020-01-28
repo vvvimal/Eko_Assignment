@@ -70,11 +70,6 @@ class UserListViewCell: UITableViewCell {
     
     // the delegate, remember to set to weak to prevent cycles
     weak var delegate : UserListViewCellDelegate?
-      
-    override func awakeFromNib() {
-      super.awakeFromNib()
-      // Initialization code
-    }
     
     private let imageDownloadManager = ImageDownloadManager()
     
