@@ -8,15 +8,20 @@
 
 import UIKit
 
+
+/// Network links
 struct NetworkData{
     static let kBaseURL = "https://api.github.com/"
     static let kUserEndPoint = "users?since="
 }
 
+
+/// App Reuse Identifiers
 struct AppIdentifierStrings {
     static let kUserListViewCellReuseIdentifier = "UserListViewCellReuseIdentifier"
 }
 
+/// App Segue Identifiers
 struct AppSegueIdentifierStrings{
     static let kGithubUserPageSegue = "GithubUserPageSegue"
 }
@@ -43,6 +48,7 @@ enum APIError:Error{
     }
 }
 
+/// HTTP Method
 enum HTTPMethod:String{
     case get = "GET"
     case post = "POST"

@@ -8,7 +8,15 @@
 
 import UIKit
 
+
 extension UIViewController{
+    
+    /// Showing alert for generic messages with action
+    ///
+    /// - Parameters:
+    ///   - title: title of the message
+    ///   - message: message body
+    ///   - completionHandler: optional action handler
     func showAlert(withTitle title: String, message : String, completionHandler:(() -> Void)? = nil) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .cancel) { action in
@@ -21,6 +29,7 @@ extension UIViewController{
         return alertController
     }
         
+    /// Activity Indicator start animation
     func activityStartAnimating() {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.startAnimating()
@@ -35,6 +44,7 @@ extension UIViewController{
         ])
     }
     
+    /// Activity Indicator stop animation
     func activityStopAnimating() {
         for view in self.view.subviews {
             if let subView = view as? UIActivityIndicatorView {

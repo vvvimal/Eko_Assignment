@@ -80,7 +80,7 @@ class UserListViewTests: BaseTests {
         }
     }
     
-    /// Test cell for row at indexpath
+    /// Test add remove favorite
     func testAddRemoveFavorite() {
         
         let waitForTableViewLoadExpectation = XCTestExpectation(description: "Wait for load table.")
@@ -127,6 +127,7 @@ class UserListViewTests: BaseTests {
         }
     }
     
+    /// Test table view didselect cell
     func testSelectCell(){
         
         let waitForTableViewLoadExpectation = XCTestExpectation(description: "Wait for load table.")

@@ -16,24 +16,19 @@ class UserListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         setupTableView()
         fetchUsers()
     }
     
     /// Setup Table View properties
     func setupTableView(){
-        
         self.tableView.accessibilityLabel = "UserListTableView"
         self.tableView.isAccessibilityElement = true
         self.tableView.tableFooterView = UIView()
         self.tableView.register(UserListViewCell.self, forCellReuseIdentifier: AppIdentifierStrings.kUserListViewCellReuseIdentifier)
     }
     
+    /// Fetch Users
     func fetchUsers(){
         activityStartAnimating()
         viewModel.getUserList(completionHandler: {[weak self] result in
@@ -85,28 +80,32 @@ class UserListViewController: UITableViewController {
 extension UserListViewController{
     // MARK: - Table view data source
 
+    /// Number of sections in table
+    /// - Parameters:
+    ///   - tableView: UItableview object
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return viewModel.numberOfSections
     }
-
+    
+    /// Number of rows in section
+    /// - Parameters:
+    ///   - tableView: UItableview object
+    ///   - section: section of tableview
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return viewModel.numberOfRows(inSection: section)
     }
-
     
+    /// Tableview Cell  setup
+    /// - Parameters:
+    ///   - tableView: UItableview object
+    ///   - indexPath: Indexpath of the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AppIdentifierStrings.kUserListViewCellReuseIdentifier, for: indexPath) as? UserListViewCell else{
             fatalError("No cell found")
         }
-
         // Configure the cell...
-        
         let user = viewModel.userAt(index: indexPath)
-        
         cell.user = user
-        cell.isFavorite = viewModel.isFavorite(userId: user.id)
         cell.delegate = self
         cell.isAccessibilityElement = true
 
@@ -143,19 +142,24 @@ extension UserListViewController{
         return 100
     }
     
+    /// Scroll View Dragging end event
+    /// - Parameters:
+    ///   - scrollView: Scroll view
+    ///   - decelerate: decelerate boolean
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
-        {
+        if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height){
             fetchUsers()
         }
     }
 }
 
 extension UserListViewController : UserListViewCellDelegate {
-    func userListViewCell(_ userListViewCell: UserListViewCell, favoriteButtonTapped userId: Int) {
-        // show alert
+    
+    /// Favorite button tapped
+    /// - Parameter userListViewCell: UserListViewCell object
+    func favoriteButtonTapped(_ userListViewCell: UserListViewCell) {
         if let indexPath = self.tableView.indexPathForRow(at: userListViewCell.center){
-            let isFavorited = self.viewModel.addFavoriteStatus(userId: userId)
+            let isFavorited = self.viewModel.addFavoriteStatus(user: viewModel.userAt(index: indexPath))
             DispatchQueue.main.async() { () -> Void in
                 if isFavorited == true {
                     self.alert = self.showAlert(withTitle: "Success", message: "Added to favorites", completionHandler: {

@@ -16,6 +16,8 @@ class UserListViewModel: NSObject {
     
     var numberOfSections = 1
     
+    /// Get user list
+    /// - Parameter completionHandler: completion with result for success/ api error
     func getUserList(completionHandler:@escaping (Result<Bool, APIError>) -> Void){
         let userListGetRequest = UserListGetRequest(count: userArray.count)
         
@@ -23,44 +25,60 @@ class UserListViewModel: NSObject {
             switch(result){
             case .success(let userListObj):
                 if let userList = userListObj {
-                    self?.userArray.append(contentsOf: userList)
+                    let updatedArray = userList.map({[weak self] user -> User in
+                        var userObj = user
+                        userObj.isFavorite = self?.isFavorite(userId: user.id)
+                        return userObj
+                    })
+                    self?.userArray.append(contentsOf: updatedArray)
                 }
                 completionHandler(.success(true))
             case .failure(let error):
                 completionHandler(.failure(error))
             }
-            
         })
     }
     
+    /// User at indexpath
+    /// - Parameter index: IndexPath
     func userAt(index:IndexPath) -> User{
         userArray[index.row]
     }
     
+    /// Number of rows for table view
+    /// - Parameter inSection: Section of tableview
     func numberOfRows(inSection: Int) -> Int{
         userArray.count
     }
     
-    func addFavoriteStatus(userId: Int) -> Bool{
+    /// Add favorite status
+    /// - Parameter user: User object
+    func addFavoriteStatus(user: User) -> Bool{
         var favorite:[Int] = Utils.getValue(for: "favoriteArray") as? [Int] ?? []
-        if favorite.filter({$0 == userId}) != [] {
-            favorite.removeFirst(userId)
-            Utils.save(value: favorite, for: "favoriteArray")
-            return false
+        if let index = userArray.firstIndex(where: {$0.id == user.id}){
+            var userObj = userArray[index]
+            if user.isFavorite == true{
+                userObj.isFavorite = false
+                userArray[index] = userObj
+                favorite.removeFirst(user.id)
+                Utils.save(value: favorite, for: "favoriteArray")
+                return false
+            }
+            else{
+                userObj.isFavorite = true
+                userArray[index] = userObj
+                favorite.append(user.id)
+                Utils.save(value: favorite, for: "favoriteArray")
+                return true
+            }
         }
-        else{
-            favorite.append(userId)
-            Utils.save(value: favorite, for: "favoriteArray")
-            return true
-        }
+        return false
     }
     
+    /// Is Favorite for user id
+    /// - Parameter userId: Used id
     func isFavorite(userId:Int) -> Bool{
         let favorite:[Int] = Utils.getValue(for: "favoriteArray") as? [Int] ?? []
-
-        return favorite.filter({$0 == userId}) != [] ? true : false /*{
-            return true
-        }
-        return false*/
+        return favorite.filter({$0 == userId}) != [] ? true : false
     }
 }

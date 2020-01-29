@@ -10,7 +10,7 @@ import UIKit
 
 // Only class object can conform to this protocol (struct/enum can't)
 protocol UserListViewCellDelegate: AnyObject {
-  func userListViewCell(_ UserListViewCell: UserListViewCell, favoriteButtonTapped userId: Int)
+  func favoriteButtonTapped(_ userListViewCell: UserListViewCell) 
 }
 
 class UserListViewCell: UITableViewCell {
@@ -61,6 +61,7 @@ class UserListViewCell: UITableViewCell {
         return fb
     }()
     
+    /// Avatar image view
     lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         addSubview(imageView)
@@ -112,8 +113,14 @@ class UserListViewCell: UITableViewCell {
             siteAdminStatusLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10.0),
             
             ])
+        avatarImageView.isAccessibilityElement = true
+        avatarImageView.accessibilityIdentifier = "avatarImageView"
+        
         nameLabel.isAccessibilityElement = true
         nameLabel.accessibilityIdentifier = "nameLabel"
+        
+        favoriteButton.isAccessibilityElement = true
+        favoriteButton.accessibilityIdentifier = "favoriteButton"
         
         urlLabel.isAccessibilityElement = true
         urlLabel.accessibilityIdentifier = "urlLabel"
@@ -156,26 +163,17 @@ class UserListViewCell: UITableViewCell {
             urlLabel.text = "\(user.html_url)"
             accountTypeLabel.text = "Type: \(user.type)"
             siteAdminStatusLabel.text = "Admin Status: \(user.site_admin)"
-
-        }
-    }
-    
-    var isFavorite:Bool! {
-        didSet{
-            let image = isFavorite == true ? UIImage.init(named: "BlueStar") : UIImage.init(named: "BlankStar")
+            let image = user.isFavorite == true ? UIImage.init(named: "BlueStar") : UIImage.init(named: "BlankStar")
             favoriteButton.setBackgroundImage(image, for: .normal)
-
         }
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
-        if let userObj = user, let delegateObj = delegate {
-            delegateObj.userListViewCell(self, favoriteButtonTapped: userObj.id)
-        }
+        delegate?.favoriteButtonTapped(self)
     }
 }
 

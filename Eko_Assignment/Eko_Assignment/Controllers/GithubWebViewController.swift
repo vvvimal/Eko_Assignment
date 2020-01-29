@@ -19,6 +19,7 @@ class GithubWebViewController: UIViewController {
         self.setUpWebView()
     }
     
+    /// Setup web view
     func setUpWebView(){
         webView.translatesAutoresizingMaskIntoConstraints = false
            self.view.addSubview(self.webView)
@@ -35,7 +36,7 @@ class GithubWebViewController: UIViewController {
 
     }
     
-    /// Set selected tag name to viewmodel
+    /// Set selected user to the view
     func setUpWith(user: User) {
         self.title = user.login
         if let url = URL.init(string: user.html_url){

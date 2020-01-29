@@ -26,7 +26,7 @@ extension NetworkManager {
     ///   - decodingType: the generic type for the model to be converted
     ///   - completion: completion handler for JSON conversion success or failure
     /// - Returns: return the session data task
-    func decodingTask<T: Decodable>(with request: URLRequest, decodingType: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
+    private func decodingTask<T: Decodable>(with request: URLRequest, decodingType: T.Type, completionHandler completion: @escaping JSONTaskCompletionHandler) -> URLSessionDataTask {
         
         let task = session.dataTask(with: request) { data, response, error in
             guard let httpResponse = response as? HTTPURLResponse else {

@@ -41,7 +41,7 @@ class NetworkManagerTests: XCTestCase {
         }
     }
     
-    /// Testing taglist API with an invalid url for failed response
+    /// Testing userlist API with an invalid url for failed response
     func testTagListResponseRequestFailed() {
         let expected = expectation(description: "Check request failed response")
         userListGetManager.getUserList(from: RequestFailedRequest(), completion: {
@@ -58,7 +58,7 @@ class NetworkManagerTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    /// Testing taglist API with an valid url for successful response
+    /// Testing user list API with an valid url for successful response
     func testTagListSuccessfulResponse() {
         let expected = expectation(description: "Check response is successful")
         userListGetManager.getUserList(from: UserListGetRequest(count: 0), completion: {

@@ -27,16 +27,18 @@ class GithubWebViewTests: BaseTests {
         vc = nil
     }
     
-    /// Test load view of list view
+    /// Test load view of Web view
     func testLoadView() {
         XCTAssertNotNil(vc)
         XCTAssertNotNil(vc.webView)
     }
     
+    /// Test title view
     func testTitleView(){
         XCTAssertEqual(user.login, vc.title, "Title and username don't match")
     }
     
+    /// Test webview url
     func testWebViewLoad(){
         XCTAssertEqual(user.html_url, vc.webView.url?.absoluteString, "Webview url and user page dont match")
     }
